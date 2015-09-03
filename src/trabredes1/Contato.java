@@ -1,15 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabredes1;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Suelin
- */
 public class Contato implements Serializable{
     String nome;
     int porta;
