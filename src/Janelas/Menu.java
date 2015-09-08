@@ -4,6 +4,10 @@
  */
 package Janelas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import trabredes1.Contato;
+
 /**
  *
  * @author Suelin
@@ -82,9 +86,7 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -116,6 +118,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void atualizaLista(ArrayList<Contato> lista){
+        DefaultTableModel modelo=new DefaultTableModel(0,3);
+        for(Contato c: lista){
+            System.out.println(c.getNome());
+            modelo.addRow(new String[]{c.getNome(),c.getIP(),""+c.getPorta()});
+        }
+        jT_Usuario.setModel(modelo);
+        System.out.println("AQYE");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Sair;
     private javax.swing.JScrollPane jScrollPane1;

@@ -38,6 +38,8 @@ public class Receive_UDP extends Thread {
             s.close();
         } catch (IOException ex) {
             Logger.getLogger(Receive_UDP.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Receive_UDP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -45,14 +47,17 @@ public class Receive_UDP extends Thread {
         exec=false;
     }
     
-    private void verifica(String msg,String ip){
+    private void verifica(String msg,String ip) throws InterruptedException{
         String tipo=""+msg.charAt(0)+msg.charAt(1)+msg.charAt(2)+msg.charAt(3);
         if(tipo.equals("USER")){
+            System.out.println("USER");
             String[] s = msg.split(" ");
             listaContatos.Add_Contato(new Contato(s[1], Integer.parseInt(""+s[2].charAt(0)+s[2].charAt(1)+s[2].charAt(2)+s[2].charAt(3)), ip));
         }
         if(tipo.equals("EXIT")){
+            String[] s = msg.split(" ");
             System.out.println("EXIT");
+            listaContatos.Rem_Contato(new Contato(s[1], Integer.parseInt(""+s[2].charAt(0)+s[2].charAt(1)+s[2].charAt(2)+s[2].charAt(3)), ip));
         }
     }
 }

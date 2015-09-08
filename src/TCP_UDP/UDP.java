@@ -31,7 +31,7 @@ public class UDP extends Thread {
             while (exec) {//primeira mensagem e mensagens de atualização
                 DatagramPacket pacote = new DatagramPacket(buf, buf.length, InetAddress.getByName(host), PORTA);
                 s.send(pacote);
-                sleep(15000);
+                sleep(5000);
             }
             msg = ("EXIT " + contato.getNome() + " " + contato.getPorta());
             buf = msg.getBytes();//mensagem de saida do grupo
